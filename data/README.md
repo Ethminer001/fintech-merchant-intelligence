@@ -1,5 +1,14 @@
 # Data Dictionary
 
+## How to Generate the Dataset
+
+The dataset files are not tracked in Git due to size. To regenerate:
+```bash
+python src/generate_dataset.py
+```
+
+This creates both files below with identical data every time (seed is fixed).
+
 ## transactions.csv (600,000 rows)
 
 | Column | Type | Description |
