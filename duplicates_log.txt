@@ -1,0 +1,34 @@
+
+============================================================
+Run: 2026-03-06 18:26:42
+============================================================
+Files deleted: 7  |  Space freed: 57.0 MB
+
+Group 1:
+  KEPT:    C:\Users\USER\OneDrive\Desktop\fintech-merchant-intelligence\README.md
+  DELETED: C:\Users\USER\OneDrive\Desktop\fintech-merchant-intelligence\fintech-merchant-intelligence\README.md
+
+Group 2:
+  KEPT:    C:\Users\USER\OneDrive\Desktop\fintech-merchant-intelligence\requirements.txt
+  DELETED: C:\Users\USER\OneDrive\Desktop\fintech-merchant-intelligence\fintech-merchant-intelligence\requirements.txt
+
+Group 3:
+  KEPT:    C:\Users\USER\OneDrive\Desktop\fintech-merchant-intelligence\data\merchants.csv
+  DELETED: C:\Users\USER\OneDrive\Desktop\fintech-merchant-intelligence\fintech-merchant-intelligence\data\merchants.csv
+
+Group 4:
+  KEPT:    C:\Users\USER\OneDrive\Desktop\fintech-merchant-intelligence\data\transactions.csv
+  DELETED: C:\Users\USER\OneDrive\Desktop\fintech-merchant-intelligence\fintech-merchant-intelligence\data\transactions.csv
+
+Group 5:
+  KEPT:    C:\Users\USER\OneDrive\Desktop\fintech-merchant-intelligence\fintech-merchant-intelligence\notebooks\01_data_exploration.ipynb
+  DELETED: C:\Users\USER\OneDrive\Desktop\fintech-merchant-intelligence\notebooks\.ipynb_checkpoints\01_data_exploration-checkpoint.ipynb
+
+Group 6:
+  KEPT:    C:\Users\USER\OneDrive\Desktop\fintech-merchant-intelligence\sql\schema.sql
+  DELETED: C:\Users\USER\OneDrive\Desktop\fintech-merchant-intelligence\fintech-merchant-intelligence\sql\schema.sql
+
+Group 7:
+  KEPT:    C:\Users\USER\OneDrive\Desktop\fintech-merchant-intelligence\src\__init__.py
+  DELETED: C:\Users\USER\OneDrive\Desktop\fintech-merchant-intelligence\fintech-merchant-intelligence\src\__init__.py
+
