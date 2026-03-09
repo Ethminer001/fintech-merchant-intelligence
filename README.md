@@ -35,6 +35,18 @@ Manual review doesn't scale. This project builds the data infrastructure and ML 
 | Peak Fraud Window | Hours 1–2 AM and 4 PM show highest fraud rates (~3.45%) |
 | Merchants Flagged | 973 merchants (19.5%) classified as Very High Risk |
 
+### Revenue Concentration — Top 10% of Merchants Drive 65.9% of Volume
+
+![Revenue Concentration](reports/revenue_concentration.png)
+
+### Hourly Fraud Patterns — Peak Risk at 1-2 AM and 4 PM
+
+![Hourly Fraud](reports/sql_hourly_fraud.png)
+
+### Model Performance — XGBoost Achieves 97%+ ROC-AUC
+
+![ROC Curve](reports/roc_curve.png)
+
 ---
 
 ## 🔍 Project Structure
