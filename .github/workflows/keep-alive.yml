@@ -2,9 +2,8 @@ name: Keep Streamlit Alive
 
 on:
   schedule:
-    # Runs every 10 hours to prevent the 12-hour sleep threshold
     - cron: '0 */10 * * *'
-  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+  workflow_dispatch:
 
 jobs:
   ping:
@@ -12,11 +11,19 @@ jobs:
     steps:
       - name: Ping Streamlit Dashboard
         run: |
-          echo "Pinging Streamlit app..."
-          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -L --max-time 30 https://fintech-merchant-intelligence-astcmpgnb72vpycszmzfir.streamlit.app/)
-          echo "HTTP Status: $HTTP_STATUS"
-          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 400 ]; then
-            echo "App is alive!"
-          else
-            echo "Warning: App returned status $HTTP_STATUS — may need manual check"
-          fi
+          pip install requests -q
+          python3 << 'EOF'
+          import requests
+
+          url = "https://fintech-merchant-intelligence-astcmpgnb72vpycszmzfir.streamlit.app/"
+          headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+
+          try:
+              response = requests.get(url, headers=headers, timeout=60, allow_redirects=True)
+              print(f"Status: {response.status_code}")
+              print(f"Final URL: {response.url}")
+              print("App is alive!")
+          except Exception as e:
+              print(f"Error: {e}")
+              print("App may need manual check")
+          EOF
