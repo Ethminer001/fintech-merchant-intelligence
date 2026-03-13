@@ -1,0 +1,22 @@
+name: Keep Streamlit Alive
+
+on:
+  schedule:
+    # Runs every 10 hours to prevent the 12-hour sleep threshold
+    - cron: '0 */10 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Streamlit Dashboard
+        run: |
+          echo "Pinging Streamlit app..."
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -L --max-time 30 https://fintech-merchant-intelligence-astcmpgnb72vpycszmzfir.streamlit.app/)
+          echo "HTTP Status: $HTTP_STATUS"
+          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 400 ]; then
+            echo "App is alive!"
+          else
+            echo "Warning: App returned status $HTTP_STATUS — may need manual check"
+          fi
