@@ -93,7 +93,7 @@ if page == "📊 Platform Overview":
     
     with col_left:
         st.subheader("Monthly Transaction Volume")
-        monthly = txn.set_index('timestamp').resample('M').agg(
+        monthly = txn.set_index('timestamp').resample('ME').agg(
             volume=('amount_ngn', 'sum'),
             count=('transaction_id', 'count')
         ).reset_index()
