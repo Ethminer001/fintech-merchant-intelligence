@@ -1,29 +1,25 @@
-name: Keep Streamlit Alive
+name: Keep Streamlit app awake
 
 on:
   schedule:
-    - cron: '0 */10 * * *'
+    - cron: "17 */8 * * *"   # every 8 hours; the app sleeps after 12 hours without traffic
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
-  ping:
+  visit:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - name: Ping Streamlit Dashboard
-        run: |
-          pip install requests -q
-          python3 << 'EOF'
-          import requests
-
-          url = "https://fintech-merchant-intelligence-astcmpgnb72vpycszmzfir.streamlit.app/"
-          headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
-
-          try:
-              response = requests.get(url, headers=headers, timeout=60, allow_redirects=True)
-              print(f"Status: {response.status_code}")
-              print(f"Final URL: {response.url}")
-              print("App is alive!")
-          except Exception as e:
-              print(f"Error: {e}")
-              print("App may need manual check")
-          EOF
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright (uses the Chrome already on the runner)
+        run: npm install --no-save playwright-core@1.48.2
+      - name: Visit the app
+        run: node .github/keepalive.js
+        env:
+          APP_URL: https://fintech-merchant-intelligence-astcmpgnb72vpycszmzfir.streamlit.app/
